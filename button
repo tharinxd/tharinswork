@@ -1,1 +1,25 @@
 import tkinter as tk
+
+def change_color(color):
+    root.configure(bg=color)
+
+root = tk.Tk()
+root.title("Color Changer")
+
+# Function to change the background color to red
+def red_button_pressed():
+    change_color("red")
+
+# Function to change the background color to blue
+def blue_button_pressed():
+    change_color("blue")
+
+# Create red button
+red_button = tk.Button(root, text="Red", command=red_button_pressed, bg="red", fg="white")
+red_button.pack(side=tk.LEFT, padx=10)
+
+# Create blue button
+blue_button = tk.Button(root, text="Blue", command=blue_button_pressed, bg="blue", fg="white")
+blue_button.pack(side=tk.RIGHT, padx=10)
+
+root.mainloop()
