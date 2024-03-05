@@ -7,7 +7,7 @@ class QuizStarter:
 
 
 
-    if__name__== "__Main__":#
+    if__name__== "__Main__":
     root = Tk()
     root.title("NZ Road Rules Quiz")
     root.mainloop()
