@@ -106,11 +106,39 @@ class Quiz:
         #confirm button
         self.confirm_button = Button(self.quiz_frame, text="Confirm", bg="red")
         self.confirm_button.grid(row=5)
+
+def test_progress(self):
+    global score
+    scr_label = self.score_label
+    choice = self.var1.get()
+
+    if len(asked) > 9:
+        if choice == questions_answers[qnum][6]:
+            score += 1
+        else:
+            scr_label.configure(text=score)
+            self.quiz_instance.config(text="Confirm")
+            scr_label.configure(text="The correct answer was: " + questions_answers[qnum][5])
+        # self.endscreen()  # To open endscreen when quiz is done, will do in part 5
+    else:
+        if choice == 0:
+            self.quiz_instance.config(text="Try Again, You didn't select an option then submit again")
+        else:
+            if choice == questions_answers[qnum][6]:
+                score += 1
+            else:
+                score += 0
+                scr_label.configure(text="The correct answer was: " + questions_answers[qnum][5])
+
+            scr_label.configure(text=score)
+            self.quiz_instance.config(text="Confirm")
+            self.questions_setup()  # Move to the next question
+       
         
 
-
+randomiser()
 if __name__ =="__main__":
     root = Tk()
-    root.title("NZ Road Rules Quiz")
+    root.title("Finacial Education Quiz")
     quiz_instance= QuizStarter (root) #instantiation, making an instance of the class QuizStarter 
     root.mainloop() #so the window doesnt dissapear
