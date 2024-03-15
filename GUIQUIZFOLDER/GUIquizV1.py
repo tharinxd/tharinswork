@@ -1,5 +1,7 @@
 from tkinter import *
 import random
+from tkinter import messagebox
+
 
 
 names = []
@@ -171,26 +173,30 @@ class Quiz:
         """Checks user's answer and progresses through the quiz."""
         global score
         choice = self.var1.get()
+        correct_answer = questions_answers[qnum][4]
        
+
         if len(asked) > 9:
-            if choice == questions_answers[qnum][4]:
+            if choice == correct_answer:
                 score += 1
-                self.score_label.config(text="SCORE: {} points".format(score))
-                self.confirm_button.config(text="Confirm")
             else:
-                # Display correct answer
-                self.score_label.config(text="SCORE: {} points".format(score))
-                self.confirm_button.config(text="Confirm")
+                # Display the correct answer
+                correct_answer_text = questions_answers[qnum][correct_answer] 
+                messagebox.showinfo("Incorrect", f"Sorry, that's incorrect.\nThe correct answer is: {correct_answer_text}")
+        # Update score label and button text
+            self.score_label.config(text="SCORE: {} points".format(score))
+            self.confirm_button.config(text="Confirm")
         else:
-            if choice == questions_answers[qnum][4]:
+            if choice == correct_answer:
                 score += 1
-                self.score_label.config(text="SCORE: {} points".format(score))
-                self.confirm_button.config(text="Confirm")
-                self.questions_setup()
             else:
-                self.score_label.config(text="SCORE: {} points".format(score))
-                self.confirm_button.config(text="Confirm")
-                self.questions_setup()
+            # Display the correct answer
+                correct_answer_text = questions_answers[qnum][correct_answer]
+                messagebox.showinfo("Incorrect", f"Sorry, that's incorrect.\nThe correct answer is: {correct_answer_text}")
+        # Update score label, button text, and proceed to the next question
+            self.score_label.config(text="SCORE: {} points".format(score))
+            self.confirm_button.config(text="Confirm")
+            self.questions_setup()
 
 
 randomiser()
